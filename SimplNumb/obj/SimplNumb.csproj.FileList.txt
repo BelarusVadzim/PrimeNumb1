@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\SimplNumb.exe
+bin\Debug\SimplNumb.pdb
+obj\Debug\SimplNumb.exe
+obj\Debug\SimplNumb.pdb

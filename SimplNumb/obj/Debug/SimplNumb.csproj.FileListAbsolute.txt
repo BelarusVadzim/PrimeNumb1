@@ -1,0 +1,10 @@
+d:\Документы\Программирование\Old Projects\SimplNumb\SimplNumb\obj\Debug\SimplNumb.exe
+d:\Документы\Программирование\Old Projects\SimplNumb\SimplNumb\obj\Debug\SimplNumb.pdb
+d:\Документы\Программирование\Old Projects\SimplNumb\SimplNumb\bin\Debug\SimplNumb.exe
+d:\Документы\Программирование\Old Projects\SimplNumb\SimplNumb\bin\Debug\SimplNumb.pdb
+D:\github2\SimplNumb\SimplNumb\obj\Debug\SimplNumb.exe
+D:\github2\SimplNumb\SimplNumb\obj\Debug\SimplNumb.pdb
+D:\github2\PrimeNumb\SimplNumb\obj\Debug\SimplNumb.exe
+D:\github2\PrimeNumb\SimplNumb\obj\Debug\SimplNumb.pdb
+D:\github2\PrimeNumb\SimplNumb\bin\Debug\SimplNumb.exe
+D:\github2\PrimeNumb\SimplNumb\bin\Debug\SimplNumb.pdb
