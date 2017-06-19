@@ -10,18 +10,26 @@ namespace PrimeNumb
     class PrimeNumbersWorker
     {
 
+
+        //private List<long> GetNumbers(long DownNumber, long UpNumber) {
+        //    List<long> ar = new List<long>();
+        //    for (long i = 0; i < UpNumber - DownNumber; i++) {
+        //        ar.Add(DownNumber + i );
+        //    }
+        //    return ar;
+        //}
+
         /// <summary>
         /// Метод получает массив натуральных чисел заданного диапаона
         /// </summary>
         /// <param name="DownNumber">Нижняя граница диапазона</param>
         /// <param name="UpNumber">Верхняя граница диапазона</param>
         /// <returns>Возвращает массив натуральных чисел</returns>
-        private List<long> GetNumbers(long DownNumber, long UpNumber) {
-            List<long> ar = new List<long>();
+        private Queue<long> GetNumbers1(long DownNumber, long UpNumber) {
+            Queue<long> ar = new Queue<long>();
             for (long i = 0; i < UpNumber - DownNumber; i++) {
-                ar.Add(DownNumber + i );
+                ar.Enqueue(DownNumber+i);
             }
-         //  Console.WriteLine(ar[ar.Count - 1]);
             return ar;
         }
 
@@ -44,23 +52,15 @@ namespace PrimeNumb
 
         private object threadLock = new object();
 
-        //private void ChekPrimeNumberAndAdd(long N, List<long> PrimeNumbersList) {
-        //    lock (threadLock) { 
-        //    if (ChekPrimeNumber(N))
-        //        PrimeNumbersList.Add(N);
-        //    }
-        //}
-
-
         /// <summary>
-        /// Метод находит все простые числа в заданном диапазоне
+        /// Однопоточный метод находит все простые числа в заданном диапазоне
         /// </summary>
         /// <param name="DownNumber">Минимальное значение диапазона</param>
         /// <param name="UpNumber">Максимальное значение диапазона</param>
         /// <returns>Список простых чисел</returns>
         public List<long> GetPrimeNumbersList(long DownNumber, long UpNumber) {
             List<long> result = new List<long>();
-            List<long> naturalNumbersLiat = GetNumbers(DownNumber, UpNumber);
+            Queue<long> naturalNumbersLiat = GetNumbers1(DownNumber, UpNumber);
             Console.WriteLine("Количество чисел в диапазоне " + naturalNumbersLiat.Count);
             foreach (long a in naturalNumbersLiat) {
                 if (ChekPrimeNumber(a))
@@ -70,14 +70,20 @@ namespace PrimeNumb
             return result;
         }
 
+
+
+        /// <summary>
+        /// Многопоточный метод находит все простые числа в заданном диапазоне
+        /// </summary>
+        /// <param name="DownNumber">Минимальное значение диапазона</param>
+        /// <param name="UpNumber">Максимальное значение диапазона</param>
+        /// <returns>Список простых чисел</returns>
         public List<long> GetPrimeNumbersListMulti(long DownNumber, long UpNumber) {
             List<long> result = new List<long>();
-            List<long> naturalNumbersLiat = GetNumbers(DownNumber, UpNumber);
+            Queue<long> naturalNumbersLiat = GetNumbers1(DownNumber, UpNumber);
             Console.WriteLine("Количество чисел в диапазоне " + naturalNumbersLiat.Count);
                 Parallel.ForEach<long>(naturalNumbersLiat, a => {
-                    
                         if (ChekPrimeNumber(a))
-
                         lock (threadLock) {
                             result.Add(a);
                         }
@@ -86,7 +92,6 @@ namespace PrimeNumb
             return result;
         }
 
-        private delegate void ChekPrimeNumberHandler(long N, List<long> PrimeNumbersList);
 
 
 
