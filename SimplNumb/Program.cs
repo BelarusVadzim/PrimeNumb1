@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace PrimeNumb
 {
@@ -23,12 +24,18 @@ namespace PrimeNumb
             PrimeNumbersWorker primeNumbersWorker = new PrimeNumbersWorker();
             DateTime StartTime = DateTime.Now;
             TimeSpan TSpan;
+            Console.WriteLine("");
+            Console.WriteLine("");
             List<long> PrimeNumbersList = primeNumbersWorker.GetPrimeNumbersList(startValue, endValue);
             TSpan = DateTime.Now - StartTime;
+
             Console.WriteLine("--------------------------------------");
             Console.WriteLine(Math.Round(TSpan.TotalMilliseconds) + "мс ушло на поиск простых чисел");
             Console.WriteLine("Найдено простых чисел - " + PrimeNumbersList.Count);
-            Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count-1]);
+            Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count - 1]);
+            Console.WriteLine("");
+            Console.WriteLine("");
+
 
             StartTime = DateTime.Now;
             PrimeNumbersList = primeNumbersWorker.GetPrimeNumbersListMulti(startValue, endValue);
@@ -38,9 +45,10 @@ namespace PrimeNumb
             Console.WriteLine("Найдено простых чисел - " + PrimeNumbersList.Count);
             Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count - 1]);
             Console.ReadKey();
-            //foreach (var i in PrimeNumbersList) {
-            //    Console.WriteLine(i);
-            //}
+            foreach (var i in PrimeNumbersList) {
+                Console.WriteLine(i);
+            }
+            Console.ReadKey();
         }
     }
 }

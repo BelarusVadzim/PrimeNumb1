@@ -18,10 +18,10 @@ namespace PrimeNumb
         /// <returns>Возвращает массив натуральных чисел</returns>
         private List<long> GetNumbers(long DownNumber, long UpNumber) {
             List<long> ar = new List<long>();
-            for (long i = 0; 2*i+1 < UpNumber - DownNumber; i++) {
-                ar.Add(DownNumber + 2*i+1 );
+            for (long i = 0; i < UpNumber - DownNumber; i++) {
+                ar.Add(DownNumber + i );
             }
-            Console.WriteLine(ar[ar.Count - 1]);
+         //  Console.WriteLine(ar[ar.Count - 1]);
             return ar;
         }
 
@@ -42,10 +42,14 @@ namespace PrimeNumb
             return true;
         }
 
-        private void ChekPrimeNumberAndAdd(long N, List<long> PrimeNumbersList) {
-            if (ChekPrimeNumber(N))
-                PrimeNumbersList.Add(N);
-        }
+        private object threadLock = new object();
+
+        //private void ChekPrimeNumberAndAdd(long N, List<long> PrimeNumbersList) {
+        //    lock (threadLock) { 
+        //    if (ChekPrimeNumber(N))
+        //        PrimeNumbersList.Add(N);
+        //    }
+        //}
 
 
         /// <summary>
@@ -70,11 +74,15 @@ namespace PrimeNumb
             List<long> result = new List<long>();
             List<long> naturalNumbersLiat = GetNumbers(DownNumber, UpNumber);
             Console.WriteLine("Количество чисел в диапазоне " + naturalNumbersLiat.Count);
-            Parallel.ForEach<long>(naturalNumbersLiat, new ParallelOptions() { MaxDegreeOfParallelism =2}, a => {
-                if (ChekPrimeNumber(a))
-                    result.Add(a);
-            }
-            );
+                Parallel.ForEach<long>(naturalNumbersLiat, a => {
+                    
+                        if (ChekPrimeNumber(a))
+
+                        lock (threadLock) {
+                            result.Add(a);
+                        }
+                }
+                );
             return result;
         }
 
