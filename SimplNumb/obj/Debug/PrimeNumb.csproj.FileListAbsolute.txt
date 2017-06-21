@@ -4,3 +4,9 @@ C:\Users\belar\Source\Repos\PrimeNumb1\SimplNumb\bin\Debug\PrimeNumb.pdb
 C:\Users\belar\Source\Repos\PrimeNumb1\SimplNumb\obj\Debug\PrimeNumb.exe
 C:\Users\belar\Source\Repos\PrimeNumb1\SimplNumb\obj\Debug\PrimeNumb.pdb
 C:\Users\belar\Source\Repos\PrimeNumb1\SimplNumb\obj\Debug\PrimeNumb.csprojResolveAssemblyReference.cache
+C:\Users\vadzim\Source\Repos\PrimeNumb1\SimplNumb\bin\Debug\PrimeNumb.exe.config
+C:\Users\vadzim\Source\Repos\PrimeNumb1\SimplNumb\bin\Debug\PrimeNumb.exe
+C:\Users\vadzim\Source\Repos\PrimeNumb1\SimplNumb\bin\Debug\PrimeNumb.pdb
+C:\Users\vadzim\Source\Repos\PrimeNumb1\SimplNumb\obj\Debug\PrimeNumb.csprojResolveAssemblyReference.cache
+C:\Users\vadzim\Source\Repos\PrimeNumb1\SimplNumb\obj\Debug\PrimeNumb.exe
+C:\Users\vadzim\Source\Repos\PrimeNumb1\SimplNumb\obj\Debug\PrimeNumb.pdb

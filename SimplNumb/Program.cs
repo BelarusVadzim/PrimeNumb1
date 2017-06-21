@@ -19,29 +19,57 @@ namespace PrimeNumb
 
             } 
             else return;
-
-
             PrimeNumbersWorker primeNumbersWorker = new PrimeNumbersWorker();
+
+
             DateTime StartTime = DateTime.Now;
             TimeSpan TSpan;
             Console.WriteLine();
             Console.WriteLine();
             List<long> PrimeNumbersList = new List<long>();
 
-            //PrimeNumbersList = primeNumbersWorker.GetPrimeNumbersList(startValue, endValue);
-            //TSpan = DateTime.Now - StartTime;
-            //Console.WriteLine("--------------------------------------");
-            //Console.WriteLine(Math.Round(TSpan.TotalMilliseconds) + "мс ушло на поиск простых чисел");
-            //Console.WriteLine("Найдено простых чисел - " + PrimeNumbersList.Count);
-            //Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count - 1]);
-            //Console.WriteLine();
-            //Console.WriteLine();
+            PrimeNumbersList = primeNumbersWorker.GetPrimeNumbersSieveOfEratosthenes(startValue, endValue);
+            TSpan = DateTime.Now - StartTime;
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Решето Эратосфена");
+            Console.WriteLine(Math.Round(TSpan.TotalMilliseconds) + "мс ушло на поиск простых чисел");
+            Console.WriteLine("Найдено простых чисел - " + PrimeNumbersList.Count);
+            Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count - 1]);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            StartTime = DateTime.Now;
+            PrimeNumbersList = primeNumbersWorker.GetPrimeNumbersSieveOfEratosthenes1(startValue, endValue);
+            TSpan = DateTime.Now - StartTime;
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Решето Эратосфена 1");
+            Console.WriteLine(Math.Round(TSpan.TotalMilliseconds) + "мс ушло на поиск простых чисел");
+            Console.WriteLine("Найдено простых чисел - " + PrimeNumbersList.Count);
+            Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count - 1]);
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
+
+
+
+            StartTime = DateTime.Now;
+            PrimeNumbersList = new List<long>();
+            PrimeNumbersList = primeNumbersWorker.GetPrimeNumbersList(startValue, endValue);
+            TSpan = DateTime.Now - StartTime;
+            Console.WriteLine("Однопоточный бруттофорс");
+            Console.WriteLine(Math.Round(TSpan.TotalMilliseconds) + "мс ушло на поиск простых чисел");
+            Console.WriteLine("Найдено простых чисел - " + PrimeNumbersList.Count);
+            Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count - 1]);
+            Console.WriteLine();
+            Console.WriteLine();
 
 
             StartTime = DateTime.Now;
             PrimeNumbersList = primeNumbersWorker.GetPrimeNumbersListMulti(startValue, endValue);
             TSpan = DateTime.Now - StartTime;
-            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Многопоточный бруттофорс");
             Console.WriteLine(Math.Round(TSpan.TotalMilliseconds) + "мс ушло на поиск простых чисел");
             Console.WriteLine("Найдено простых чисел - " + PrimeNumbersList.Count);
             Console.WriteLine("Последнее из найденых простых чисед - " + PrimeNumbersList[PrimeNumbersList.Count - 1]);

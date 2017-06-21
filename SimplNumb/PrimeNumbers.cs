@@ -11,13 +11,13 @@ namespace PrimeNumb
     {
 
 
-        //private List<long> GetNumbers(long DownNumber, long UpNumber) {
-        //    List<long> ar = new List<long>();
-        //    for (long i = 0; i < UpNumber - DownNumber; i++) {
-        //        ar.Add(DownNumber + i );
-        //    }
-        //    return ar;
-        //}
+        private List<long> GetNumbers(long DownNumber, long UpNumber) {
+            List<long> ar = new List<long>();
+            for (long i = 0; i < UpNumber - DownNumber; i++) {
+                ar.Add(DownNumber + i);
+            }
+            return ar;
+        }
 
         /// <summary>
         /// Метод получает массив натуральных чисел заданного диапаона
@@ -92,6 +92,53 @@ namespace PrimeNumb
             return result;
         }
 
+
+        public List<long> GetPrimeNumbersSieveOfEratosthenes(long DownNumber, long UpNumber) {
+
+            long a = 0, b = 0;
+            int n = 0;
+            List<long> naturalNumbersList = GetNumbers(DownNumber, UpNumber);
+
+            while(n< naturalNumbersList.Count) {
+                a = naturalNumbersList[n];
+                b = a;
+                while (a < UpNumber-b) {
+                    a += b;
+                    naturalNumbersList.Remove(a);
+                }
+                n++;
+            }
+            return naturalNumbersList;
+        }
+
+        public List<long> GetPrimeNumbersSieveOfEratosthenes1(long DownNumber, long UpNumber) {
+
+            List<bool> arr = new List<bool>();
+            for (int i = 0; i <= UpNumber; i++) {
+                arr.Add(true);
+            }
+
+
+            List<long> naturalNumbersList = new List<long>();
+           
+
+
+            //bool[] arr = new bool[40*1000000];
+            for (int i = 2; i < arr.Count; i++) {
+                arr[i] = true;
+            }
+
+            for (int i = 2; i < arr.Count; i++) {
+                if (arr[i]) {
+                    for (int j = 2; j*i < arr.Count; j++) {
+                        arr[j * i] = false;
+                    }
+                    naturalNumbersList.Add(i);
+                }
+
+            }
+            return naturalNumbersList;
+        }
 
 
 
